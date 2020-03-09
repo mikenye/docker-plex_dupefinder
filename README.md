@@ -1,10 +1,10 @@
 ## Docker image for `plex_dupefinder`
 
-This is a docker image containing the (`plex_dupefinder`)[https://github.com/l3uddz/plex_dupefinder] utility and all of its prerequisites.
+This is a docker image containing the [`plex_dupefinder`](https://github.com/l3uddz/plex_dupefinder) utility and all of its prerequisites.
 
-(Plex DupeFinder)[https://github.com/l3uddz/plex_dupefinder] is a python script that finds duplicate versions of media (TV episodes and movies) in your Plex Library and tells Plex to remove the lowest rated files/versions (based on user-specified scoring) to leave behind a single file/version.
+[Plex DupeFinder](https://github.com/l3uddz/plex_dupefinder) is a python script that finds duplicate versions of media (TV episodes and movies) in your Plex Library and tells Plex to remove the lowest rated files/versions (based on user-specified scoring) to leave behind a single file/version.
 
-It is a fantastically useful utility created by (l3uddz)[https://github.com/l3uddz].
+It is a fantastically useful utility created by [l3uddz](https://github.com/l3uddz).
 
 ## Multi Architecture Support
 This image should pull and run on the following architectures:
@@ -68,7 +68,7 @@ Please edit the default configuration before running again!
 
 After the first run, you'll need to edit your `config.json` file to include the libraries you'd like `plex_dupefinder` to check for duplicates.
 
-I would recommend reading (the `plex_dupefinder` documentation)[https://github.com/l3uddz/plex_dupefinder/blob/master/README.md#configuration] for more information on this.
+I would recommend reading [the `plex_dupefinder` documentation](https://github.com/l3uddz/plex_dupefinder/blob/master/README.md#configuration) for more information on this.
 
 **Note**: a Plex token for your library is stored within the config.json, so be sure to adjust permissions accordingly.
 
