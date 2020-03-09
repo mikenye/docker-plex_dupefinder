@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv sh
+
+# Copy configuration if it exists
+if [ -f "/config/config.json" ]
+then
+    cp /config/config.json /opt/plex_dupefinder/config.json
+fi
+
+# Create group
+addgroup -g ${PGID} plex_dupefinder
+
+# Create user
+adduser -h /config -G plex_dupefinder -S -D -u ${PUID} plex_dupefinder
+
+# Fix permissions
+chown -R plex_dupefinder:plex_dupefinder /opt/plex_dupefinder
