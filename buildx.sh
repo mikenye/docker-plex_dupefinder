@@ -2,6 +2,10 @@
 
 set -x
 
+docker context use x86_64
+export DOCKER_CLI_EXPERIMENTAL="enabled"
+docker buildx use homecluster
+
 IMAGE=mikenye/plex_dupefinder
 
 # Build the image using buildx
