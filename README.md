@@ -1,4 +1,4 @@
-## Docker image for `plex_dupefinder`
+# mikenye/plex_dupefinder
 
 This is a docker image containing the [`plex_dupefinder`](https://github.com/l3uddz/plex_dupefinder) utility and all of its prerequisites.
 
@@ -7,17 +7,20 @@ This is a docker image containing the [`plex_dupefinder`](https://github.com/l3u
 It is a fantastically useful utility created by [l3uddz](https://github.com/l3uddz).
 
 ## Multi Architecture Support
+
 This image should pull and run on the following architectures:
- * `linux/amd64` (`x86_64`): Built on Linux x86-64
- * `linux/arm/v7` (`armv7l`, `armhf`, `arm32v7`): Built on Odroid HC2 running ARMv7 32-bit
- * `linux/arm64` (`aarch64`, `arm64v8`): Built on a Raspberry Pi 4 Model B running ARMv8 64-bit
+
+* `linux/amd64` (`x86_64`): Built on Linux x86-64
+* `linux/arm/v7` (`armv7l`, `armhf`, `arm32v7`): Built on Odroid HC2 running ARMv7 32-bit
+* `linux/arm64` (`aarch64`, `arm64v8`): Built on a Raspberry Pi 4 Model B running ARMv8 64-bit
 
 ## Quick Start
+
 **NOTE**: The docker command provided in this quick start is given as an example, and parameters should be adjusted to your needs.
 
 It is suggested to configure an alias as follows (and place into your `.bash_aliases` file):
 
-```
+```shell
 alias plex_dupefinder='docker run \
                  --rm -it \
                  -e PGID=$(id -g) \
@@ -27,8 +30,9 @@ alias plex_dupefinder='docker run \
 ```
 
 This will:
-- Launch `plex_dupefinder` using the UID and GID of the current user.
-- Map `/opt/plex_dupefinder` on the host through to the container at `/config`.
+
+* Launch `plex_dupefinder` using the UID and GID of the current user.
+* Map `/opt/plex_dupefinder` on the host through to the container at `/config`.
 
 ## First run
 
@@ -36,7 +40,7 @@ When first run, `plex_dupefinder` will ask a set of questions, allowing a `confi
 
 See below for an example of the first run:
 
-```
+```text
 $ plex_dupefinder
 [s6-init] making user provided files available at /var/run/s6/etc...exited 0.
 [s6-init] ensuring user provided files have correct perms...exited 0.
@@ -97,7 +101,7 @@ No port mappings are required for this container.
 
 If the system on which the container runs doesn't provide a way to easily update the Docker image (eg: watchtower), simply pull the latest version of the container:
 
-```
+```shell
 docker pull mikenye/plex_dupefinder
 ```
 
@@ -105,7 +109,7 @@ docker pull mikenye/plex_dupefinder
 
 To get shell access to a running container, execute the following command:
 
-```
+```shell
 docker exec -ti CONTAINER sh
 ```
 
@@ -113,7 +117,7 @@ Where `CONTAINER` is the name of the running container.
 
 To start a container with a shell (instead of `plex_dupefinder`), execute the following command:
 
-```
+```shell
 docker run --rm -ti --entrypoint=/bin/sh mikenye/plex_dupefinder
 ```
 
