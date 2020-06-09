@@ -8,6 +8,7 @@ ENV PUID=1000 \
 RUN set +x && \
     echo "========== Installing prerequisites ==========" && \
     apk add --no-cache \
+        file \
         python3 \
         py3-pip \
         git \
@@ -26,7 +27,7 @@ RUN set +x && \
     echo "========== Installing s6-overlay ==========" && \
     wget -q -O - https://raw.githubusercontent.com/mikenye/deploy-s6-overlay/master/deploy-s6-overlay.sh | sh && \
     echo "========== Clean-up ==========" && \
-    apk del git gnupg && \
+    apk del file git gnupg && \
     rm -rf /opt/plex_dupefinder/.git /opt/plex_dupefinder/.github /opt/plex_dupefinder/.gitignore /tmp/*
 
 COPY etc/ /etc/
