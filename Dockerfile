@@ -24,10 +24,7 @@ RUN set -x && \
     cd /opt/plex_dupefinder && \
     mkdir -p /config && \
     echo "========== Save version info ==========" && \
-    git log && \
-    git log | head -1 && \
-    git log | head -1 | tr -s " " "_" && \
-    git log | head -1 | tr -s " " "_" > /VERSION && \
+    git log | head -1 | tr -s " " | tr " " "_" > /VERSION && \
     echo "========== Installing more prerequisites ==========" && \
     python3 -m pip install --no-cache-dir -r requirements.txt && \
     python3 -m pip install --no-cache-dir --upgrade plexapi && \
