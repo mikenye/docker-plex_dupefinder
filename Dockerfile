@@ -5,7 +5,7 @@ ENV PUID=1000 \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     S6_CMD_ARG0=/usr/local/bin/plex_dupefinder
 
-SHELL ["/bin/sh", "-o", "pipefail", "-c"]
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 
 COPY rootfs/ /
 
