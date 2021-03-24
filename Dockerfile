@@ -5,6 +5,8 @@ ENV PUID=1000 \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     S6_CMD_ARG0=/usr/local/bin/plex_dupefinder
 
+COPY rootfs/ /
+
 RUN set +x && \
     echo "========== Installing prerequisites ==========" && \
     apk add --no-cache \
@@ -29,7 +31,5 @@ RUN set +x && \
     echo "========== Clean-up ==========" && \
     apk del file git gnupg && \
     rm -rf /opt/plex_dupefinder/.git /opt/plex_dupefinder/.github /opt/plex_dupefinder/.gitignore /tmp/*
-
-COPY etc/ /etc/
 
 ENTRYPOINT [ "/init" ]
