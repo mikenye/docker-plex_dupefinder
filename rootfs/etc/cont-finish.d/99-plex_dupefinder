@@ -5,8 +5,6 @@
 if [ -f "/opt/plex_dupefinder/config.json" ]
 then
 
-
-
     # If an existing config file exists, make a "backup"
     if [ -f "/config/config.json" ]
     then
