@@ -47,6 +47,6 @@ RUN set -x && \
     rm -rf /src/* /tmp/* /var/lib/apt/lists/* && \
     rm -rf /opt/plex_dupefinder/.git /opt/plex_dupefinder/.github /opt/plex_dupefinder/.gitignore
 
-COPY etc/ /etc/
+COPY rootfs/ /
 
 ENTRYPOINT [ "/init" ]
