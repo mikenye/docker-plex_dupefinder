@@ -7,6 +7,8 @@ ENV PUID=1000 \
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+COPY rootfs/ /
+
 RUN set -x && \
     TEMP_PACKAGES=() && \
     KEPT_PACKAGES=() && \
@@ -26,7 +28,7 @@ RUN set -x && \
         ${TEMP_PACKAGES[@]} \
         && \
     git config --global advice.detachedHead false && \
-    python3 -m pip install --upgrade pip && \
+    python3 -m pip install --no-cache-dir --upgrade pip && \
     # Installing plex_dupefinder
     git clone --depth=1 https://github.com/l3uddz/plex_dupefinder /opt/plex_dupefinder && \
     ln -s /opt/plex_dupefinder/plex_dupefinder.py /usr/local/bin/plex_dupefinder && \
@@ -35,9 +37,9 @@ RUN set -x && \
     # Save version info
     git log | head -1 | tr -s " " "_" | tee /VERSION && \
     # Installing more prerequisites
-    python3 -m pip install -r requirements.txt && \
+    python3 -m pip install --no-cache-dir -r requirements.txt && \
     #python3 -m pip install --upgrade plexapi && \
-    python3 -m pip install git+https://github.com/pkkid/python-plexapi.git && \
+    python3 -m pip install --no-cache-dir git+https://github.com/pkkid/python-plexapi.git && \
     # Installing s6-overlay
     curl --location -o /tmp/deploy-s6-overlay.sh https://raw.githubusercontent.com/mikenye/deploy-s6-overlay/master/deploy-s6-overlay.sh && \
     bash /tmp/deploy-s6-overlay.sh && \
@@ -46,7 +48,5 @@ RUN set -x && \
     apt-get autoremove -y && \
     rm -rf /src/* /tmp/* /var/lib/apt/lists/* && \
     rm -rf /opt/plex_dupefinder/.git /opt/plex_dupefinder/.github /opt/plex_dupefinder/.gitignore
-
-COPY etc/ /etc/
 
 ENTRYPOINT [ "/init" ]

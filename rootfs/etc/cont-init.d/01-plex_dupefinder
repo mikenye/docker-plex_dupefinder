@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv sh
+#shellcheck shell=sh
 
 # Copy configuration if it exists
 if [ -f "/config/config.json" ]
@@ -7,10 +8,10 @@ then
 fi
 
 # Create group
-groupadd -f -r -g ${PGID} plex_dupefinder
+addgroup --gid "${PGID}" plex_dupefinder
 
 # Create user
-useradd -d /config -g ${PGID} -N -r -u ${PUID} plex_dupefinder
+adduser --system --home /config --ingroup plex_dupefinder --uid "${PUID}" plex_dupefinder
 
 # Fix permissions
 chown -R plex_dupefinder:plex_dupefinder /opt/plex_dupefinder

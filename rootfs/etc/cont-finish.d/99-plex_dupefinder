@@ -1,18 +1,15 @@
 #!/usr/bin/with-contenv sh
+#shellcheck shell=sh
 
 # Copy configuration file to /config if it exists
 if [ -f "/opt/plex_dupefinder/config.json" ]
 then
 
-
-
     # If an existing config file exists, make a "backup"
     if [ -f "/config/config.json" ]
     then
 
-        diff -q /opt/plex_dupefinder/config.json /config/config.json
-        if [ "$?" -ne "0" ]
-        then
+        if ! diff -q /opt/plex_dupefinder/config.json /config/config.json; then
             cp /config/config.json /config/config.json.previous
         fi
     fi
