@@ -7,6 +7,8 @@ ENV PUID=1000 \
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+COPY rootfs/ /
+
 RUN set -x && \
     TEMP_PACKAGES=() && \
     KEPT_PACKAGES=() && \
@@ -46,7 +48,5 @@ RUN set -x && \
     apt-get autoremove -y && \
     rm -rf /src/* /tmp/* /var/lib/apt/lists/* && \
     rm -rf /opt/plex_dupefinder/.git /opt/plex_dupefinder/.github /opt/plex_dupefinder/.gitignore
-
-COPY rootfs/ /
 
 ENTRYPOINT [ "/init" ]
